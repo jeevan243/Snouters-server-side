@@ -3,7 +3,6 @@ const Pets = require("../model/pet.model");
 
 const router = express.Router();
 
-
 router.post("/create", async (req, res) => {
     try {
         let pet = await Pets.create(req.body)
@@ -34,4 +33,11 @@ router.get("/:id", async (req, res) => {
         return res.status(500).send(er.message)
     }
 })
+
+
+
+
+
+
+
 module.exports = router;
