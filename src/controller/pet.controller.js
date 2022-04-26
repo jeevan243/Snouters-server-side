@@ -16,8 +16,10 @@ router.post("/create", async (req, res) => {
 
 router.get("/all", async (req, res) => {
     try {
-        let pets = await (await Pets.find().lean().exec()).sort((a, b) => a - b)
+        let pets = await Pets.find()
+        console.log(pets)
         return res.status(200).send(pets)
+
 
     } catch (er) {
         return res.status(500).send(er.message)
@@ -34,7 +36,28 @@ router.get("/:id", async (req, res) => {
     }
 })
 
+//Ascending
+router.get("/all/sort1", async (req, res) => {
+    try {
+        let pets = await Pets.find().sort({ costperday: 1 })
+        return res.status(200).send(pets)
+    } catch (er) {
+        return res.status(500).send(er.message)
+    }
+})
 
+//Descending
+router.get("/all/sort-1", async (req, res) => {
+    try {
+        let pets = await Pets.find().sort({ costperday: -1 })
+        console.log(pets)
+        return res.status(200).send(pets)
+
+
+    } catch (er) {
+        return res.status(500).send(er.message)
+    }
+})
 
 
 
