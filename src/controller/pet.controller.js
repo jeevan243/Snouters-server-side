@@ -16,7 +16,7 @@ router.post("/create", async (req, res) => {
 
 router.get("/all", async (req, res) => {
     try {
-        let pets = await Pets.find().lean().exec()
+        let pets = await (await Pets.find().lean().exec()).sort((a, b) => a - b)
         return res.status(200).send(pets)
 
     } catch (er) {
