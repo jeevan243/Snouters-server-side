@@ -27,7 +27,7 @@ app.post("/register", register);
 app.get("/userdata", getUsers)
 app.post("/login", login);
 
-app.use("/listing", petController)
+app.use("/pets", petController)
 
 
 

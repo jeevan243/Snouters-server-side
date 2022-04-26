@@ -10,7 +10,8 @@ const petSchema = new mongoose.Schema({
     capacity: { type: String, required: true },
     costperday: { type: String, required: true },
     verified: { type: String, required: true },
-    rating: { type: String, required: true }
+    rating: { type: String, required: true },
+    id: { type: String }
 
 },
     {
