@@ -25,4 +25,13 @@ router.get("/all", async (req, res) => {
     }
 })
 
+router.get("/:id", async (req, res) => {
+    try {
+        let pets = await Pets.findById(req.params.id).lean().exec()
+        return res.status(200).send(pets)
+
+    } catch (er) {
+        return res.status(500).send(er.message)
+    }
+})
 module.exports = router;
